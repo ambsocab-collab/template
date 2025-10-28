@@ -1,0 +1,20 @@
+# PRODUCT REQUIREMENTS DOCUMENT (PRD)
+
+## Table of Contents
+
+- [PRODUCT REQUIREMENTS DOCUMENT (PRD)](#table-of-contents)
+  - [next-sqlite-starter](#next-sqlite-starter)
+  - [1. EXECUTIVE SUMMARY](#1-executive-summary)
+  - [2. PRODUCT OVERVIEW](#2-product-overview)
+  - [3. KEY FEATURES (MVP)](#3-key-features-mvp)
+  - [4. TECHNICAL STACK](#4-technical-stack)
+  - [5. USER FLOWS](#5-user-flows)
+  - [6. SUCCESS METRICS](#6-success-metrics)
+  - [7. PROJECT STRUCTURE](#7-project-structure)
+  - [8. SETUP INSTRUCTIONS (FOR USERS)](#8-setup-instructions-for-users)
+  - [9. DEPENDENCIES (MINIMAL)](#9-dependencies-minimal)
+  - [10. ACCEPTANCE CRITERIA](#10-acceptance-criteria)
+  - [11. TIMELINE](#11-timeline)
+  - [12. RISKS & MITIGATIONS](#12-risks-mitigations)
+  - [13. FUTURE ENHANCEMENTS (v2+)](#13-future-enhancements-v2)
+  - [14. DEPENDENCIES & INTEGRATIONS](#14-dependencies-integrations)
