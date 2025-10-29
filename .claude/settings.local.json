@@ -4,7 +4,11 @@
       "Bash(npx create-next-app@latest:*)",
       "Bash(mkdir:*)",
       "Bash(npm install:*)",
-      "Bash(md-tree explode:*)"
+      "Bash(md-tree explode:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run format:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

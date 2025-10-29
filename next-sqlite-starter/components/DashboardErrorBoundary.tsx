@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface DashboardErrorBoundaryProps {
   children: ReactNode;
@@ -40,7 +40,7 @@ export class DashboardErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error) {
     // Log error for debugging (could also send to error tracking service)
-    console.error('Dashboard error boundary caught:', error);
+    console.error("Dashboard error boundary caught:", error);
   }
 
   render() {
@@ -68,17 +68,17 @@ export class DashboardErrorBoundary extends React.Component<
                 Dashboard Unavailable
               </h3>
               <p className="text-slate-600 text-sm mb-4">
-                We encountered an unexpected error. Please try refreshing the page or contacting
-                support if the problem persists.
+                We encountered an unexpected error. Please try refreshing the
+                page or contacting support if the problem persists.
               </p>
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {process.env.NODE_ENV === "development" && this.state.error && (
                 <details className="mt-4 text-left">
                   <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-700">
                     Error Details (Development Only)
                   </summary>
                   <pre className="mt-2 p-2 bg-slate-100 text-slate-800 text-xs overflow-auto rounded max-h-40">
                     {this.state.error.message}
-                    {'\n\n'}
+                    {"\n\n"}
                     {this.state.error.stack}
                   </pre>
                 </details>
@@ -100,4 +100,4 @@ export class DashboardErrorBoundary extends React.Component<
 }
 
 // Ensure React is available for this component
-import React from 'react';
+import React from "react";

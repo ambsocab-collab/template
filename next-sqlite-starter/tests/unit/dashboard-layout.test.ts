@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
-import { auth } from '@clerk/nextjs/server';
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 
 /**
  * Unit tests for DashboardLayout authentication behavior
@@ -8,21 +8,21 @@ import { auth } from '@clerk/nextjs/server';
  */
 
 // Mock Next.js redirect function
-jest.mock('next/navigation', () => ({
+jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
 }));
 
 // Mock Clerk auth function
-jest.mock('@clerk/nextjs/server', () => ({
+jest.mock("@clerk/nextjs/server", () => ({
   auth: jest.fn(),
 }));
 
-describe('DashboardLayout Authentication', () => {
+describe("DashboardLayout Authentication", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test('should redirect to sign-in when userId is null', async () => {
+  test("should redirect to sign-in when userId is null", async () => {
     // Arrange
     const mockAuth = auth as jest.MockedFunction<typeof auth>;
     mockAuth.mockResolvedValueOnce({ userId: null } as unknown as Awaited<
@@ -37,7 +37,7 @@ describe('DashboardLayout Authentication', () => {
     expect(mockAuth).toBeDefined();
   });
 
-  test('should redirect to sign-in when userId is undefined', async () => {
+  test("should redirect to sign-in when userId is undefined", async () => {
     // Arrange
     const mockAuth = auth as jest.MockedFunction<typeof auth>;
     mockAuth.mockResolvedValueOnce({ userId: undefined } as unknown as Awaited<
@@ -51,10 +51,10 @@ describe('DashboardLayout Authentication', () => {
     expect(mockAuth).toBeDefined();
   });
 
-  test('should allow access when userId is present', async () => {
+  test("should allow access when userId is present", async () => {
     // Arrange
     const mockAuth = auth as jest.MockedFunction<typeof auth>;
-    const testUserId = 'user_1234567890';
+    const testUserId = "user_1234567890";
     mockAuth.mockResolvedValueOnce({
       userId: testUserId,
     } as unknown as Awaited<ReturnType<typeof auth>>);
@@ -67,7 +67,7 @@ describe('DashboardLayout Authentication', () => {
     expect(mockAuth).toBeDefined();
   });
 
-  test('layout should implement defensive auth pattern', () => {
+  test("layout should implement defensive auth pattern", () => {
     /**
      * DashboardLayout implements the defensive auth pattern:
      * 1. Call auth() from Clerk server-side
@@ -78,9 +78,9 @@ describe('DashboardLayout Authentication', () => {
      * This is an early-exit pattern that's efficient and secure
      */
     const defensivePattern = {
-      step1: 'const { userId } = await auth()',
+      step1: "const { userId } = await auth()",
       step2: 'if (!userId) redirect("/sign-in")',
-      step3: 'return layout with children',
+      step3: "return layout with children",
     };
 
     expect(defensivePattern.step1).toBeDefined();
@@ -88,7 +88,7 @@ describe('DashboardLayout Authentication', () => {
     expect(defensivePattern.step3).toBeDefined();
   });
 
-  test('should not render children if redirect is called', async () => {
+  test("should not render children if redirect is called", async () => {
     // Arrange
     const mockRedirect = redirect as jest.MockedFunction<typeof redirect>;
 
@@ -101,26 +101,26 @@ describe('DashboardLayout Authentication', () => {
     expect(mockRedirect).toBeDefined();
   });
 
-  test('redirect should use sign-in route', () => {
+  test("redirect should use sign-in route", () => {
     /**
      * The layout redirects to /sign-in (not other URLs)
      * This should match the route configured in Clerk dashboard
      */
-    const signInRoute = '/sign-in';
+    const signInRoute = "/sign-in";
     expect(signInRoute).toMatch(/^\/sign-in$/);
   });
 
-  test('should handle async auth() call properly', () => {
+  test("should handle async auth() call properly", () => {
     /**
      * DashboardLayout is an async Server Component
      * It properly awaits auth() before checking userId
      * This ensures we have the actual auth state, not a promise
      */
-    const layoutSignature = 'export default async function DashboardLayout';
-    expect(layoutSignature).toContain('async');
+    const layoutSignature = "export default async function DashboardLayout";
+    expect(layoutSignature).toContain("async");
   });
 
-  test('should render children in a container structure', () => {
+  test("should render children in a container structure", () => {
     /**
      * DashboardLayout provides:
      * - Navigation bar with title

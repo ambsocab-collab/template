@@ -7,14 +7,14 @@
  * Runtime testing should be done via E2E tests (Playwright)
  */
 
-describe('Clerk Middleware Configuration', () => {
-  test('middleware should export clerkMiddleware', () => {
+describe("Clerk Middleware Configuration", () => {
+  test("middleware should export clerkMiddleware", () => {
     // This verifies that middleware.ts exports clerkMiddleware as default
     // Middleware.ts contains: export default clerkMiddleware();
     expect(true).toBe(true); // Pattern verification in middleware.ts file
   });
 
-  test('middleware matcher should protect dashboard routes', () => {
+  test("middleware matcher should protect dashboard routes", () => {
     /**
      * The middleware matcher pattern is:
      * ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"]
@@ -35,10 +35,10 @@ describe('Clerk Middleware Configuration', () => {
     const matcherPattern = ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"];
 
     // Test that the pattern correctly identifies dashboard routes
-    const dashboardRoute = '/dashboard';
+    const dashboardRoute = "/dashboard";
     const matchesDashboard = matcherPattern.some((pattern) => {
       // Simplified regex test (actual Next.js matcher is more complex)
-      if (pattern.includes('(?!')) {
+      if (pattern.includes("(?!")) {
         // Test the negative lookahead pattern
         return /^\//.test(dashboardRoute) && !/\._next/.test(dashboardRoute);
       }
@@ -48,16 +48,16 @@ describe('Clerk Middleware Configuration', () => {
     expect(matchesDashboard).toBe(true);
   });
 
-  test('middleware should not block static assets', () => {
+  test("middleware should not block static assets", () => {
     /**
      * The negative lookahead (?!.*\\..*) in the matcher pattern
      * ensures that static files are not processed by middleware
      */
     const staticAssets = [
-      '/favicon.ico',
-      '/_next/static/chunks/main.js',
-      '/styles/globals.css',
-      '/public/logo.png',
+      "/favicon.ico",
+      "/_next/static/chunks/main.js",
+      "/styles/globals.css",
+      "/public/logo.png",
     ];
 
     // All static assets should be excluded from middleware
@@ -66,7 +66,7 @@ describe('Clerk Middleware Configuration', () => {
     });
   });
 
-  test('middleware function should handle async operations', () => {
+  test("middleware function should handle async operations", () => {
     /**
      * clerkMiddleware from @clerk/nextjs/server is async-capable
      * It properly handles auth() calls and redirects

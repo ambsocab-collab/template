@@ -1,8 +1,8 @@
-import { type Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
-import RootLayoutClient from './layout-client'
-import { Navbar } from './components/navbar'
+import { type Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import RootLayoutClient from "./layout-client";
+import { Navbar } from "./components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'next-sqlite-starter',
-  description: 'All you need for a modern SaaS in one template',
-}
+  title: "next-sqlite-starter",
+  description: "All you need for a modern SaaS in one template",
+};
 
 export default function RootLayout({
   children,
@@ -26,12 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <RootLayoutClient>
           <Navbar />
           {children}
         </RootLayoutClient>
       </body>
     </html>
-  )
+  );
 }

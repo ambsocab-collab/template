@@ -1,44 +1,55 @@
-'use client'
+"use client";
 
-import { Sun, Moon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useEffect, useState } from 'react'
+import { Sun, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+
+type ThemeState = {
+  isDark: boolean;
+  mounted: boolean;
+};
 
 export function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [state, setState] = useState<ThemeState>({
+    isDark: false,
+    mounted: false,
+  });
 
   // Load preference on mount
   useEffect(() => {
-    setMounted(true)
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const shouldBeDark = savedTheme === 'dark' || (savedTheme === null && prefersDark)
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const shouldBeDark =
+      savedTheme === "dark" || (savedTheme === null && prefersDark);
 
-    setIsDark(shouldBeDark)
     if (shouldBeDark) {
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove("dark");
     }
-  }, [])
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setState({ isDark: shouldBeDark, mounted: true });
+  }, []);
 
   const toggleTheme = () => {
-    const newIsDark = !isDark
-    setIsDark(newIsDark)
+    const newIsDark = !state.isDark;
+    setState({ ...state, isDark: newIsDark });
 
     if (newIsDark) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-  }
+  };
 
   // Prevent hydration mismatch
-  if (!mounted) {
-    return <Button variant="outline" size="icon" disabled />
+  if (!state.mounted) {
+    return <Button variant="outline" size="icon" disabled />;
   }
 
   return (
@@ -48,11 +59,11 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
     >
-      {isDark ? (
+      {state.isDark ? (
         <Sun className="h-[1.2rem] w-[1.2rem]" />
       ) : (
         <Moon className="h-[1.2rem] w-[1.2rem]" />
       )}
     </Button>
-  )
+  );
 }

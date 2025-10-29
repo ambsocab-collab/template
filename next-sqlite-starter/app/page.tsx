@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Lock, Database, CreditCard } from 'lucide-react'
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Lock, Database, CreditCard } from "lucide-react";
 
 export default function Home() {
   return (
@@ -71,5 +71,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }

@@ -1,4 +1,21 @@
 {
+  "name": "next-sqlite-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd next-sqlite-starter && next dev",
+    "build": "cd next-sqlite-starter && next build",
+    "start": "cd next-sqlite-starter && next start",
+    "lint": "cd next-sqlite-starter && eslint . --ext .ts,.tsx",
+    "format": "cd next-sqlite-starter && prettier --write .",
+    "format:check": "cd next-sqlite-starter && prettier --check .",
+    "type-check": "cd next-sqlite-starter && tsc --noEmit",
+    "test": "cd next-sqlite-starter && jest",
+    "test:watch": "cd next-sqlite-starter && jest --watch",
+    "test:coverage": "cd next-sqlite-starter && jest --coverage",
+    "db:push": "cd next-sqlite-starter && drizzle-kit push",
+    "db:generate": "cd next-sqlite-starter && drizzle-kit generate"
+  },
   "dependencies": {
     "@clerk/nextjs": "^6.34.0",
     "autoprefixer": "^10.4.21",
@@ -12,6 +29,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@clerk/testing": "^1.13.8",
     "@playwright/test": "^1.56.1",
     "@testing-library/react": "^16.3.0",
     "@types/better-sqlite3": "^7.6.13",

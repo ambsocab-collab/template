@@ -1,6 +1,6 @@
-'use server';
+"use server";
 
-import { SignOutButton } from '@clerk/nextjs';
+import { SignOutButton } from "@clerk/nextjs";
 
 export default async function DashboardPage() {
   // Auth is guaranteed by DashboardLayout - no need to check again

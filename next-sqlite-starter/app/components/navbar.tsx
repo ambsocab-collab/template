@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import { auth } from '@clerk/nextjs/server'
-import { ThemeToggle } from './theme-toggle'
-import { Button } from '@/components/ui/button'
+import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
+import { ThemeToggle } from "./theme-toggle";
+import { Button } from "@/components/ui/button";
 
 export async function Navbar() {
-  const { userId } = await auth()
+  const { userId } = await auth();
 
   return (
     <nav className="flex items-center justify-between px-4 py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
       {/* Logo/Brand */}
-      <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
+      <Link
+        href="/"
+        className="text-xl font-bold text-gray-900 dark:text-white"
+      >
         next-sqlite-starter
       </Link>
 
@@ -28,5 +31,5 @@ export async function Navbar() {
         <ThemeToggle />
       </div>
     </nav>
-  )
+  );
 }

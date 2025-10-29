@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   ClerkProvider,
@@ -7,7 +7,7 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from "@clerk/nextjs";
 
 export default function RootLayoutClient({
   children,
@@ -31,5 +31,5 @@ export default function RootLayoutClient({
       </header>
       {children}
     </ClerkProvider>
-  )
+  );
 }

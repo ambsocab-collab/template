@@ -1,7 +1,7 @@
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
-import { ReactNode } from 'react';
-import { DashboardErrorBoundary } from '@/components/DashboardErrorBoundary';
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { ReactNode } from "react";
+import { DashboardErrorBoundary } from "@/components/DashboardErrorBoundary";
 
 export default async function DashboardLayout({
   children,
@@ -11,7 +11,7 @@ export default async function DashboardLayout({
   const { userId } = await auth();
 
   if (!userId) {
-    redirect('/sign-in');
+    redirect("/sign-in");
   }
 
   return (
