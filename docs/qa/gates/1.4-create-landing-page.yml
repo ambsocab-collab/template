@@ -1,0 +1,21 @@
+schema: 1
+story: '1.4'
+gate: CONCERNS
+status_reason: 'All acceptance criteria met and implementation is solid, but TypeScript compilation errors in proxy.ts and build configuration issues must be resolved before production.'
+reviewer: 'Quinn'
+updated: '2025-10-29T23:30:00Z'
+top_issues:
+  - id: 'REL-001'
+    severity: high
+    finding: 'TypeScript error in proxy.ts line 10: auth().protect() method does not exist on SessionAuthWithRedirect type'
+    suggested_action: 'Review Clerk@latest API documentation and update proxy.ts to use correct middleware pattern'
+  - id: 'REL-002'
+    severity: medium
+    finding: 'Build validator cannot resolve page.tsx files in (auth)/sign-in/[[...rest]]/ and (auth)/sign-up/[[...rest]]/ catch-all routes'
+    suggested_action: 'Verify catch-all route file structure matches Next.js expectations; ensure page.tsx exists in each catch-all directory'
+  - id: 'ARCH-001'
+    severity: low
+    finding: 'ThemeToggle component uses mounted state for hydration safety instead of suppressHydrationWarning attribute'
+    suggested_action: 'Consider using suppressHydrationWarning on root html element for cleaner approach in future iterations'
+waiver:
+  active: false

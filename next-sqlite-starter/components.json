@@ -3,8 +3,18 @@
   "style": "default",
   "rsc": true,
   "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
   "aliases": {
-    "@": "./components",
-    "@/*": "./*"
+    "components": "./components",
+    "utils": "./lib/utils"
+  },
+  "resolvedPaths": {
+    "utils": "./lib/utils.ts",
+    "components": "./components"
   }
 }
